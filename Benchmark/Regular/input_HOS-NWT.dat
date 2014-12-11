@@ -1,0 +1,50 @@
+----------------------- Tank dimensions -----------------------
+Length(m) of the wavetank    :: xlen             :: 46.4d0
+Beam(m) of the wavetank      :: ylen             :: 29.74d0
+Depth(m) of the wavetank     :: h                :: 5.d0
+------------------------ Select case --------------------------
+Choice of computed case      :: icase            :: 2
+------------------ Sloshing case (icase = 1) ------------------
+Number of the natural mode   :: islosh           :: 3
+Amplitude (m) of the mode    :: aslosh           :: 0.2d0
+--------------- Monochromatic case (icase = 2) ----------------
+Amplitude (m) of wave train  :: amp_mono         :: 0.1d0
+Frequency (Hz) of wave train :: nu_mono          :: 0.546875d0
+Angle (deg) from x-axis      :: theta_mono       :: 0.d0
+Phasis (rad) of wave train   :: ph_mono          :: 0.d0
+Directional wmk type         :: ibat             :: 2
+Wave target distance (ibat=3):: xd_mono          :: 18.d0
+-------------------- File case (icase = 3) --------------------
+Name of frequency file       :: file_name        :: focusSPH
+Frequency cut-off            :: i_cut            :: 0
+Low cut_off frequency (Hz)   :: nuc_low          :: 0.3d0
+High cut_off frequency (Hz)  :: nuc_high         :: 3.d0
+------------------ Irregular wave (icase=4) -------------------
+Significant wave height (m)  :: Hs               :: 0.05d0
+Peak period (s)              :: Tp               :: 1.d0
+Shape factor (Jonswap)       :: gamma            :: 3.3d0
+Seed number for random numb. :: iseed            :: 513
+-------------------- Wavemaker definition ---------------------
+Nonlinear order of wavemaker :: i_wmk            :: 3
+Type (1: piston, 2: hinged)  :: igeom            :: 2
+Rotation axis distance       :: d_hinge          :: 2.147d0
+Time ramp                    :: iramp            :: 1
+Time ramp duration (s)       :: Tramp            :: 3.0d0
+Time before stopping wmk (s) :: T_stop           :: 40.0d0
+----------------------- Numerical beach -----------------------
+Absorption numerical beach   :: iabsnb           :: 1
+Beginning front num. beach   :: xabsf            :: 0.8d0
+Absorption strength front    :: coeffabsf        :: 1.d0
+------------- Elevation/Velocity-Pressure probes --------------
+Use of probes                :: iprobes          :: 1
+1: on mesh, 2: on specif pts :: itypprobes       :: 2
+Filename of probe positions  :: pro_file         :: prob.inp
+---------------------- Time-integration -----------------------
+Time tolerance: RK 4(5)      :: toler            :: 1.e-6
+Output frequency             :: f_out            :: 20.d0
+--------------------------- Output ----------------------------
+Output: 1-dim. ; 0-nondim.   :: idim             :: 1
+free surface plot            :: i3d              :: 0
+modes plot                   :: imodes           :: 1
+wavemaker motion plot        :: iwmk             :: 0
+Swense output 1='yes',0='no' :: i_sw             :: 0

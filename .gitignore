@@ -1,0 +1,21 @@
+# ignore obj directory
+obj/
+# ignore bin folder except input and waverf coef
+bin/*
+!bin/input_HOST.dat
+# ignore backup files + Mac specific files
+*~
+sources/*/*~
+sources/*/*.orig
+.DS_Store
+# ignore Benchmark except benchmark.sh
+Benchmark/*~
+Benchmark/tecplot.phy
+#!Benchmark/*.sh
+# More clever way to do this?
+Benchmark/*/Results
+Benchmark/*/tecplot.phy
+Benchmark/Irreg_3D/CAT1__22.cfg
+Benchmark/Irreg_3D/CAT1__22.dat
+# ignore tecplot tmp files
+tecplot.phy
