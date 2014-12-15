@@ -47,7 +47,7 @@ icase = 3 and 31 and 32 and 33 : File case
       32 - 'filename.txt' is an output of control software used in ECN Towing Tank
       33 - 'filename.txt' is an output of control software used in other tanks
 
-icase = 4 : Irregular wave
+icase = 4 and 41 : Irregular wave
    Wavemaker movement creates an irregular wave field with a given Hs and Tp
       4  - JONSWAP spectrum
       41 - Bretschneider spectrum

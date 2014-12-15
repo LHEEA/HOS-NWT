@@ -217,7 +217,7 @@ ELSE IF (icase == 4.OR.icase==41.OR.icase==42) THEN !Irregular wave
     wav%config%clock       = 32.0_rp
     wav%config%rnum        = CEILING(LOG10(T_stop*Tscale*wav%config%clock)/LOG10(2.0_rp)) !superior round up
     wav%config%depth       = h
-    wav%config%ramp        = 3
+    wav%config%ramp        = 3.0_rp*wav%config%clock !3 seconds
     wav%config%typ_ramp    = 'lin'
     wav%config%cutoff_low  = 0.0_rp
     wav%config%cutoff_high = 3.0_rp/Tp ! dimensional
