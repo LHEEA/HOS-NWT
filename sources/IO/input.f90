@@ -110,7 +110,6 @@ CALL read_datum(unit, igeom)            ! Type (1: piston, 2: hinged)
 CALL read_datum(unit, d_hinge)          ! Rotation axis distance
 CALL read_datum(unit, iramp)            ! Time ramp
 CALL read_datum(unit, Tramp)            ! Time ramp duration
-CALL read_datum(unit, T_stop)           ! Time before stopping wmk 
 CALL read_blank_line(unit)
 WRITE(*,*)
 CALL read_datum(unit, iabsnb)           ! Absorption numerical beach
@@ -119,10 +118,10 @@ CALL read_datum(unit, coeffabsf)        ! Absorption strength front
 CALL read_blank_line(unit)
 WRITE(*,*)
 CALL read_datum(unit, iprobes)           ! Use of probes
-CALL read_datum(unit, itypprobes)        ! 1: on mesh, 2: on specif pts
 CALL read_datum(unit, pro_file)          ! Filename of probe positions
 CALL read_blank_line(unit)
 WRITE(*,*)
+CALL read_datum(unit, T_stop)            ! Duration of the simulation 
 CALL read_datum(unit, toler)             ! Time tolerance: RK 4(5)
 CALL read_datum(unit, f_out)             ! Output frequency
 CALL read_blank_line(unit)
@@ -360,7 +359,6 @@ CALL write_datum(unit, igeom,             'igeom',          'Type (1: piston, 2:
 CALL write_datum(unit, d_hinge,           'd_hinge',        'Rotation axis distance')
 CALL write_datum(unit, iramp,             'iramp',          'Time ramp')
 CALL write_datum(unit, Tramp,             'Tramp',          'Time ramp duration')
-CALL write_datum(unit, T_stop,            'T_stop',         'Time before stopping wmk')
 !
 CALL write_blank_line(unit,'----------------------- Numerical beach -----------------------')
 CALL write_datum(unit, iabsnb,            'iabsnb',         'Absorption numerical beach')
@@ -369,10 +367,10 @@ CALL write_datum(unit, coeffabsf,         'coeffabsf',      'Absorption strength
 !
 CALL write_blank_line(unit,'------------- Elevation/Velocity-Pressure probes --------------')
 CALL write_datum(unit, iprobes,           'iprobes',        'Use of probes')
-CALL write_datum(unit, itypprobes,        'itypprobes',     '1: on mesh, 2: on specif pts')
 CALL write_datum(unit, pro_file,          'pro_file',       'Filename of probe positions')
 !
 CALL write_blank_line(unit,'---------------------- Time-integration -----------------------')
+CALL write_datum(unit, T_stop,            'T_stop',         'Duration of the simulation')
 CALL write_datum(unit, toler,             'toler',          'Time tolerance: RK 4(5)')
 CALL write_datum(unit, f_out,             'f_out',          'Output frequency')
 !

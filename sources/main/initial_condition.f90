@@ -501,13 +501,11 @@ REAL(RP), DIMENSION(m3_add) :: cs_add, s_add, k_add_s_add
 !
 IF (iprobes.eq.1) THEN
    DO j=1,nprobes
-      IF (itypprobes == 2) THEN
-         DO i1=1,n1
-            DO i2=1,n2
-               mat_coscos(i1,i2,j) = cos(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
-            ENDDO
+      DO i1=1,n1
+         DO i2=1,n2
+             mat_coscos(i1,i2,j) = cos(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
          ENDDO
-      ENDIF
+      ENDDO
    ENDDO     
 ENDIF
 !    ___________________________________________________________________
@@ -568,19 +566,14 @@ ENDIF
 !
 IF (iprobes.eq.2) THEN
    DO j=1, nprobes
-      IF (itypprobes == 2) THEN
-         DO i1=1,n1
-            DO i2=1,n2
-               mat_coscos(i1,i2,j)     = cos(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
-               mat_sincos(i1,i2,j)     = sin(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
-               mat_cossin(i1,i2,j)     = cos(kx(i1) * xprobe(j)) * sin(ky(i2) * yprobe(j))
-               mat_sinsin(i1,i2,j)     = sin(kx(i1) * xprobe(j)) * sin(ky(i2) * yprobe(j))
-            ENDDO
-         ENDDO
-      ELSE
-         WRITE(*,*) 'Check the case itypprobe =/ 2'
-         STOP
-      ENDIF
+	 DO i1=1,n1
+		DO i2=1,n2
+		   mat_coscos(i1,i2,j)     = cos(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
+		   mat_sincos(i1,i2,j)     = sin(kx(i1) * xprobe(j)) * cos(ky(i2) * yprobe(j))
+		   mat_cossin(i1,i2,j)     = cos(kx(i1) * xprobe(j)) * sin(ky(i2) * yprobe(j))
+		   mat_sinsin(i1,i2,j)     = sin(kx(i1) * xprobe(j)) * sin(ky(i2) * yprobe(j))
+		ENDDO
+	 ENDDO
    ENDDO
 ENDIF
 

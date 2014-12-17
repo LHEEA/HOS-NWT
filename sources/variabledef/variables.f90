@@ -115,7 +115,7 @@ REAL(RP)          :: alpha,alphat,alphatt
 REAL(RP), DIMENSION(m2) :: rampy, drampy
 !
 ! Numerical probes (FS elevation and pressure)
-INTEGER           :: iprobes, itypprobes, nprobes
+INTEGER           :: iprobes, nprobes
 CHARACTER(LEN=8)  :: pro_file
 !
 ! Time stepping

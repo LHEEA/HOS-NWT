@@ -30,16 +30,15 @@ Type (1: piston, 2: hinged)  :: igeom            :: 2
 Rotation axis distance       :: d_hinge          :: 1.d0
 Time ramp                    :: iramp            :: 0
 Time ramp duration (s)       :: Tramp            :: 5.0d0
-Time before stopping wmk (s) :: T_stop           :: 50.0d0
 ----------------------- Numerical beach -----------------------
 Absorption numerical beach   :: iabsnb           :: 1
 Beginning front num. beach   :: xabsf            :: 0.8d0
 Absorption strength front    :: coeffabsf        :: 1.d0
 ------------- Elevation/Velocity-Pressure probes --------------
 Use of probes                :: iprobes          :: 1
-1: on mesh, 2: on specif pts :: itypprobes       :: 2
 Filename of probe positions  :: pro_file         :: prob.inp
 ---------------------- Time-integration -----------------------
+Duration of the simulation   :: T_stop           :: 50.0d0
 Time tolerance: RK 4(5)      :: toler            :: 1.e-4
 Output frequency             :: f_out            :: 30.d0
 --------------------------- Output ----------------------------

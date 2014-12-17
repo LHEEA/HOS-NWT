@@ -130,17 +130,6 @@ if (iprobes.eq.1) then
    END DO
    CLOSE(55)
    !
-   IF (itypprobes == 1) THEN
-      i_xprobe = FLOOR(xprobe)
-      xprobe = i_xprobe * xlen / (n1-1)
-      IF (n2 /= 1) THEN
-         i_yprobe = FLOOR(yprobe)
-         yprobe = i_yprobe * ylen / (n2-1)
-      ELSE
-         i_yprobe = 1
-      END IF
-   END IF
-   !
    WRITE(*,'(A)') 'Probes position:'
    !
    DO i1=1,nprobes
@@ -181,22 +170,6 @@ if (iprobes.eq.2) then
       ENDIF
    END DO
    CLOSE(55)
-   !
-   IF (itypprobes == 1) THEN
-      i_xprobe = FLOOR(xprobe)
-      xprobe = i_xprobe * xlen / (n1-1)
-      IF (n2 /= 1) THEN
-         i_yprobe = FLOOR(yprobe)
-         yprobe = i_yprobe * ylen / (n2-1)
-      ELSE
-         i_yprobe = 1
-      END IF
-      i_zprobe = FLOOR(zprobe)
-      zprobe = i_zprobe * h / (n1-1)
-      write(*,*) 'zprobe =',zprobe
-      write(*,*) 'to check if it is what we want...'
-      stop
-   END IF
    !
    WRITE(*,'(A)') 'Pressure probes position:'
    !
@@ -285,15 +258,11 @@ endif
 ! Probes elevation
 IF (iprobes.EQ.1) THEN
   DO j = 1, nprobes
-	 IF (itypprobes == 1) THEN
-		eta_tmp = eta(i_xprobe(j),i_yprobe(j))
-	 ELSE
-	FT_tmp(1:n1,1:n2) = space_2_Fourier(eta,'cos','cos')
-		eta_tmp = 0.0_rp
-		DO i2=1,n2
-		   eta_tmp = eta_tmp + DOT_PRODUCT(FT_tmp(1:n1,i2),mat_coscos(1:n1,i2,j))
-		ENDDO
-	 ENDIF
+	 FT_tmp(1:n1,1:n2) = space_2_Fourier(eta,'cos','cos')
+	 eta_tmp = 0.0_rp
+	 DO i2=1,n2
+	    eta_tmp = eta_tmp + DOT_PRODUCT(FT_tmp(1:n1,i2),mat_coscos(1:n1,i2,j))
+	 ENDDO
 	 ! Volume is now corrected in runge_kutta to be exactly the volume variation of wavemaker... No adjustment necessary
 	 eta_probe(j) = eta_tmp
   ENDDO
