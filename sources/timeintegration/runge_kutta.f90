@@ -335,7 +335,7 @@ IF(i_sw.EQ.1) THEN
     	CALL error_FS(modesspecx,modesspecy,modesspecz,modesspect,modesadd,modesaddt, modesFS, modesFSt, &
             vitxref_FS,vityref_FS, vitzref_FS, phitref_FS, error)
 
-	IF (error.GT.0.1_rp) THEN
+	IF ((error.GT.0.1_rp).AND.(n2.EQ.1)) THEN
 		print*, 'Max relative error = ', error, '... direct method'    
 		  CALL HOSvel2_direct(etark,phisrk,a_add_rk_1,da1st_add,a_add_rk_2,da2nd_add&
 			   ,a_add_rk_3,da3rd_add,a1st_l,da1st, eta1st_l, deta1st, a2nd_l, da2nd, eta2nd_l, deta2nd, &

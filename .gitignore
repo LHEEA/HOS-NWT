@@ -19,3 +19,8 @@ Benchmark/Irreg_3D/CAT1__22.cfg
 Benchmark/Irreg_3D/CAT1__22.dat
 # ignore tecplot tmp files
 tecplot.phy
+# ignore PostProcessing/obj directory
+sources/PostProcessing/obj/
+# ignore PostProcessing/bin directory except input
+sources/PostProcessing/bin/*
+!sources/PostProcessing/bin/input_post_process.dat

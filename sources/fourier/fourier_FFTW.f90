@@ -66,11 +66,11 @@ type(C_PTR)                           :: plan_CC, plan_SC, plan_CS, plan_SS
 REAL(RP), ALLOCATABLE, DIMENSION(:,:) :: s_2_f, f_2_s
 REAL(RP), ALLOCATABLE, DIMENSION(:,:) :: in, out, in_sin, out_sin
 !
-type(C_PTR)                          :: plan_Cy, plan_Sy
+type(C_PTR)                           :: plan_Cy, plan_Sy
 REAL(RP), ALLOCATABLE, DIMENSION(:)   :: s_2_f_y, f_2_s_y
 REAL(RP), ALLOCATABLE, DIMENSION(:)   :: in_y, out_y
 !
-type(C_PTR)                          :: plan_CC_add, plan_SC_add, plan_CS_add, plan_SS_add
+type(C_PTR)                           :: plan_CC_add, plan_SC_add, plan_CS_add, plan_SS_add
 type(C_PTR)                           :: plan_CC_add_I, plan_SC_add_I, plan_CS_add_I, plan_SS_add_I
 REAL(RP), ALLOCATABLE, DIMENSION(:,:) :: s_2_f_add, f_2_s_add
 REAL(RP), ALLOCATABLE, DIMENSION(:,:) :: in_add, out_add
@@ -136,8 +136,10 @@ SELECT CASE (lib)
          CALL dfftw_plan_r2r_1d_(plan_SC_add_I, n3_add, in_add(1,1), out_add(1,1), FFTW_RODFT10, flag)
 	 	 !
          ! Fourier transforms on 'dealiased' domain i.e. extended
-         CALL dfftw_plan_r2r_1d(plan_CC_big, nd1,   in_big(1,1),     out_big(1,1),     FFTW_REDFT00, flag)
-         CALL dfftw_plan_r2r_1d(plan_SC_big, nd1-2, in_sin_big(1,1), out_sin_big(1,1), FFTW_RODFT00, flag)
+         IF (nd1 > 2) THEN
+			 CALL dfftw_plan_r2r_1d(plan_CC_big, nd1,   in_big(1,1),     out_big(1,1),     FFTW_REDFT00, flag)
+			 CALL dfftw_plan_r2r_1d(plan_SC_big, nd1-2, in_sin_big(1,1), out_sin_big(1,1), FFTW_RODFT00, flag)
+		 ENDIF
       ELSE
          ! 2D FFTs
          CALL dfftw_plan_r2r_2d_(plan_CC, n1,   n2,   in(1,1),     out(1,1),     FFTW_REDFT00, FFTW_REDFT00, flag)
@@ -156,12 +158,14 @@ SELECT CASE (lib)
          CALL dfftw_plan_r2r_2d_(plan_CS_add_I, n3_add, n2-2, in_add(1,2), out_add(1,2), FFTW_REDFT10, FFTW_RODFT00, flag)
          CALL dfftw_plan_r2r_2d_(plan_SS_add,   n3_add, n2-2, in_add(1,2), out_add(1,2), FFTW_RODFT01, FFTW_RODFT00, flag)
          CALL dfftw_plan_r2r_2d_(plan_SS_add_I, n3_add, n2-2, in_add(1,2), out_add(1,2), FFTW_RODFT10, FFTW_RODFT00, flag)
-	 	!
-	 	! 2D FFTs in 'dealiased' domain (i.e. extended) 
-         CALL dfftw_plan_r2r_2d(plan_CC_big, nd1,   nd2,   in_big(1,1),     out_big(1,1),     FFTW_REDFT00, FFTW_REDFT00, flag)
-         CALL dfftw_plan_r2r_2d(plan_SC_big, nd1-2, nd2,   in_sin_big(1,1), out_sin_big(1,1), FFTW_RODFT00, FFTW_REDFT00, flag)
-         CALL dfftw_plan_r2r_2d(plan_CS_big, nd1,   nd2-2, in_big(1,2),     out_big(1,2),     FFTW_REDFT00, FFTW_RODFT00, flag)
-         CALL dfftw_plan_r2r_2d(plan_SS_big, nd1-2, nd2-2, in_sin_big(1,2), out_sin_big(1,2), FFTW_RODFT00, FFTW_RODFT00, flag)
+	 	 !
+	 	 ! 2D FFTs in 'dealiased' domain (i.e. extended)
+	 	 IF ((nd1 > 2).AND.(nd2>2)) THEN
+            CALL dfftw_plan_r2r_2d(plan_CC_big, nd1,   nd2,   in_big(1,1),     out_big(1,1),     FFTW_REDFT00, FFTW_REDFT00, flag)
+            CALL dfftw_plan_r2r_2d(plan_SC_big, nd1-2, nd2,   in_sin_big(1,1), out_sin_big(1,1), FFTW_RODFT00, FFTW_REDFT00, flag)
+            CALL dfftw_plan_r2r_2d(plan_CS_big, nd1,   nd2-2, in_big(1,2),     out_big(1,2),     FFTW_REDFT00, FFTW_RODFT00, flag)
+            CALL dfftw_plan_r2r_2d(plan_SS_big, nd1-2, nd2-2, in_sin_big(1,2), out_sin_big(1,2), FFTW_RODFT00, FFTW_RODFT00, flag)
+         ENDIF
       END IF
       WRITE(*,'(A)') 'Done'
    CASE DEFAULT
