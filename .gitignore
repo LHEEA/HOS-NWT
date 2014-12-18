@@ -1,8 +1,10 @@
 # ignore obj directory
 obj/
-# ignore bin folder except input and waverf coef
+# ignore bin folder except input and and .inp example
 bin/*
-!bin/input_HOST.dat
+!bin/input_HOS-NWT.dat
+!bin/prob.inp
+!bin/pres.inp
 # ignore backup files + Mac specific files
 *~
 sources/*/*~
