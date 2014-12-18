@@ -421,7 +421,7 @@ IF(i_sw.EQ.1) THEN
 !      endif
   if (ABS(time_cur) < tiny) then
 	 WRITE(123,'(5000(ES17.10,1X))',REC=1) 1.0_rp*n1, 1.0_rp*n3_add , 1.0_rp*n2, 1.0_rp/f_out,T_stop &
-		  , xlen*h , ylen*h, h, (modesspecx(i1,1), i1=9,n1)
+		  ,xlen , ylen, h, (modesspecx(i1,1), i1=9,n1)
 	 
 	 WRITE(123,'(5000(ES17.10,1X))',REC=2) (modesspecy(i1,1), i1=1,n1)
 	 WRITE(123,'(5000(ES17.10,1X))',REC=3) (modesspecz(i1,1), i1=1,n1)

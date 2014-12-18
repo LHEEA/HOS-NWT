@@ -59,11 +59,6 @@ n1     = NINT(x1)
 n2     = NINT(x2)
 n3_add = NINT(x3)
 !
-! FIXME: xlen and ylen are dimensional for now in modes_HOS_SWENS.dat
-! Going to non-dinmensional
-xlen = xlen/depth
-ylen = ylen/depth
-!
 CLOSE(i_unit)
 !
 END SUBROUTINE init_read_mod
