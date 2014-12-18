@@ -16,8 +16,11 @@ LINKLIB = $(LIBDIR)libfftw3.a $(LIBDIR)liblapack.a $(LIBDIR)librefblas.a
 #
 #FC=ifort
 #
-#OPTFLAGS= -O3 -xHOST -ipo -ip -module $(OBJDIR) # -fp-model precise this option to keep exactly same fp description
-#DBFLAGS= -O0 -traceback -check all -warn all -module $(OBJDIR)
+#OPTFLAGS= -O3 -xHOST -ipo -ip # -fp-model precise this option to keep exactly same fp description
+#DBFLAGS= -O0 -traceback -check all -warn all
+#
+#FLAGMOD1= -module $(OBJDIR) #Flag for writing modules in $(OBJ)
+#FLAGMOD2= -module $(OBJDIR) #Flag for reading modules in $(OBJ)
 #
 # gfortran compiler (optimized for Mac Pro with intel corei7: avx not working on Mac)
 FC=gfortran
@@ -131,9 +134,9 @@ clean:
 
 depend $(OBJDIR).depend:
 	@if test -d bin; then echo "exists"; else mkdir bin; fi
-	@if test -d obj; then echo "exists"; else mkdir Obj; fi
+	@if test -d obj; then echo "exists"; else mkdir obj; fi
 	@if test -d bin/Results; then echo "exists"; else mkdir bin/Results; fi
 	rm -f $(OBJDIR).depend
-	makedepf90 -b $(OBJDIR) $(SRCS0) > $(OBJDIR).depend
+	makedepf90 -b $(OBJDIR) $(SRCS) > $(OBJDIR).depend
 
 .PHONY: clean depend
