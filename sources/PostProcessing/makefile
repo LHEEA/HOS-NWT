@@ -6,6 +6,7 @@ SRCDIR3=$(LOCDIR)/../fourier/
 OBJDIR =$(LOCDIR)/obj/
 LIBDIR=/usr/local/lib/
 BINDIR=$(LOCDIR)/bin/
+LINKLIB = $(LIBDIR)libfftw3.a
 ## ifort compiler
 #FC=ifort
 ##
@@ -66,7 +67,7 @@ Objlink = $(addprefix $(OBJDIR), $(addsuffix .o, $(module))) $(addprefix $(OBJDI
 
 # rule to link the program
 $(BINDIR)$(nomcode): $(SRCDIR)$(nomcode:%=%.f90) $(Objlink) $(OBJDIR).depend
-	$(FC) $(FFLAGS2) -o $(BINDIR)$(nomcode) $(SRCDIR)$(nomcode:%=%.f90) $(Objlink) $(LIBDIR)libfftw3.a $(LIBDIR)librefblas.a $(LIBDIR)liblapack.a
+	$(FC) $(FFLAGS2) -o $(BINDIR)$(nomcode) $(SRCDIR)$(nomcode:%=%.f90) $(Objlink) $(LINKLIB)
 
 # now comes a meta-rule for compiling any "f90" source file.
 $(OBJDIR)%.o: $(SRCDIR)%.f90 $(OBJDIR).depend

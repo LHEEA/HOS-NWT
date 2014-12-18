@@ -10,7 +10,7 @@ SRCDIR6 = sources/IO/
 OBJDIR  = obj/
 LIBDIR  = /usr/local/lib/
 BINDIR  = bin/
-LINKLIB = $(LIBDIR)libfftw3.a $(LIBDIR)librefblas.a $(LIBDIR)liblapack.a
+LINKLIB = $(LIBDIR)libfftw3.a $(LIBDIR)liblapack.a $(LIBDIR)librefblas.a
 #
 # ifort compiler
 #
