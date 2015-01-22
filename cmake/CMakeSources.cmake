@@ -1,0 +1,24 @@
+SET(src
+    ${SRC_DIRECTORY}/main/HOS-NWT.f90
+    ${SRC_DIRECTORY}/main/wavemaking.f90
+    ${SRC_DIRECTORY}/main/filtering.f90
+    ${SRC_DIRECTORY}/main/dealiasing.f90
+    ${SRC_DIRECTORY}/main/resol_HOS.f90
+    ${SRC_DIRECTORY}/main/resol_wmkr.f90
+    ${SRC_DIRECTORY}/main/initial_condition.f90
+    ${SRC_DIRECTORY}/variabledef/variables.f90
+    ${SRC_DIRECTORY}/variabledef/common_vars.f90
+    ${SRC_DIRECTORY}/variabledef/type.f90
+    ${SRC_DIRECTORY}/wave/definition2.f90
+    ${SRC_DIRECTORY}/wave/config_def.f90
+    ${SRC_DIRECTORY}/wave/read_ocean_txt.f90
+    ${SRC_DIRECTORY}/wave/wave_def.f90
+    ${SRC_DIRECTORY}/wave/linear_wave.f90
+    ${SRC_DIRECTORY}/fourier/fourier_FFTW.f90
+    ${SRC_DIRECTORY}/timeintegration/runge_kutta.f90
+    ${SRC_DIRECTORY}/timeintegration/variablechange.f90
+    ${SRC_DIRECTORY}/IO/input.f90
+    ${SRC_DIRECTORY}/IO/vol_energy.f90
+    ${SRC_DIRECTORY}/IO/velocities.f90
+    ${SRC_DIRECTORY}/IO/output.f90
+    )
