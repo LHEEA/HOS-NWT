@@ -153,7 +153,7 @@ dwdt_tmp = fourier_2_space(a_dwdt,'cos','cos')
 ! Outputs
 DO i2=jmin,jmax
 	DO i1=imin,imax
-		IF((zlocal).GT.eta(i1-imin+1,i2-jmin+1)) THEN
+		IF((zlocal).GT.eta(i1,i2)) THEN
 			vitx(i1-imin+1,i2-jmin+1) = 0.0_rp
 			vity(i1-imin+1,i2-jmin+1) = 0.0_rp
 			vitz(i1-imin+1,i2-jmin+1) = 0.0_rp
@@ -237,7 +237,7 @@ DO i1=imin,imax
 	phiztadd_l = fourier_2_space_y(phiztadd_l,'cos')
 	!
 	DO i2=jmin,jmax
-		IF((zlocal).GT.eta(i1-imin+1,i2-jmin+1)) THEN
+		IF((zlocal).GT.eta(i1,i2)) THEN
 			phitadd(i1-imin+1,i2-jmin+1)   = 0.0_rp
 			phixadd(i1-imin+1,i2-jmin+1)   = 0.0_rp
 			phiyadd(i1-imin+1,i2-jmin+1)   = 0.0_rp
@@ -603,15 +603,16 @@ ELSE
    dely = ylen_star / (n2-1)
 END IF
 !
-imin = FLOOR(x_min/L/delx) + 1
-imax = CEILING(x_max/L/delx) + 1
+imin = MAX(1,FLOOR(x_min/L/delx) + 1)
+imax = MIN(n1,CEILING(x_max/L/delx) + 1)
 if(n2.NE.1) then
-	jmin = FLOOR(y_min/L/dely) + 1
-	jmax = CEILING(y_max/L/dely) + 1
+	jmin = MAX(1,FLOOR(y_min/L/dely) + 1)
+	jmax = MIN(n2,CEILING(y_max/L/dely) + 1)
 else
 	jmin = 1
 	jmax = 1
 endif
+!
 i_xvect = imax-imin+1
 i_yvect = jmax-jmin+1
 i_zvect = nz !FIXME: what do I have to choose.
