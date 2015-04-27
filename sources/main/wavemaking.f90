@@ -101,7 +101,7 @@ end if
 !
 ! number of frequency components between 0 and 1 Hz
 !
-n_max  = FLOOR((wav%config%clock * SQRT(g / wav%config%depth)))
+n_max  = MAX(1,FLOOR((wav%config%clock * SQRT(g / wav%config%depth))))
 n_max  = 2**wav%config%rnum / n_max
 ! total number of components
 n_wave = size(wav%ampli)
