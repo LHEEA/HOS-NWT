@@ -181,7 +181,7 @@ IF (i_card /= 0) THEN
 			ENDIF
 			! Output time step
 			CALL output_time_step_card(i_card,tecplot,time,dt_out_star,zlocal,z_min,z_max,T_start,L_adim,T_adim,i_test,&
-				imin,imax,jmin,jmax,i_zvect,vitx,vity,vitz,phit)
+				imin,imax,jmin,jmax,i_zvect,vitx,vity,vitz,phit,eta)
 		ENDDO
 		!
 		! next time-step
