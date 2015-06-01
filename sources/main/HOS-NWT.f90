@@ -476,7 +476,9 @@ DO WHILE (time_cur < T_stop + delt_out)        ! instead of DO WHILE (time_cur <
 	END IF
 	200 format('    volume = ',1ES12.4,' t= ',1ES11.4,' timestep:',ES11.4,2(X,I5)) 
    !
-   !ccccccccccc END OF WRITING ZONE ccccccccccccccccccccccccccccc!      
+   !ccccccccccc END OF WRITING ZONE ccccccccccccccccccccccccccccc!
+   !
+   IF (ABS(time_cur - T_stop) <= tiny) EXIT ! output of the last zone is done
    !     ________________________________________________________
    !
    !      =======================================
