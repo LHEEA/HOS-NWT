@@ -216,9 +216,15 @@ if (iprobes.eq.2) then
 end if
 !
 ! Description of volumic informations in a specific file (for coupling with e.g. SWENS approach or velocity/pressure cards)
-if(i_sw.eq.1) then
+IF(i_sw.eq.1) then
    OPEN(123,file='Results/modes_HOS_SWENSE.dat',status='REPLACE', FORM='FORMATTED', ACCESS='DIRECT',RECL=18*(n1)) 
-endif
+   !
+   ! We assume that n1 is greater n3_add in the writing
+   IF (n3_add.GT.n1) THEN
+      PRINT*, 'Change the value of n1 and/or n3 so that n1>=n3_add'
+      STOP
+   ENDIF
+ENDIF
 !
 END SUBROUTINE init_output
 !
@@ -431,6 +437,7 @@ IF(i_sw.EQ.1) THEN
 	 WRITE(123,'(5000(ES17.10,1X))',REC=7) (modesadd(i3,1)  , i3=1,n3_add)
 	 WRITE(123,'(5000(ES17.10,1X))',REC=8) (modesaddt(i3,1) , i3=1,n3_add)
 	 do i2=2,n2
+		WRITE(123,'(5000(ES17.10,1X))',REC=1+8*(i2-1)) (modesspecx(i1,i2), i1=1,n1)
 		WRITE(123,'(5000(ES17.10,1X))',REC=2+8*(i2-1)) (modesspecy(i1,i2), i1=1,n1)
 		WRITE(123,'(5000(ES17.10,1X))',REC=3+8*(i2-1)) (modesspecz(i1,i2), i1=1,n1)
 		WRITE(123,'(5000(ES17.10,1X))',REC=4+8*(i2-1)) (modesspect(i1,i2), i1=1,n1)
