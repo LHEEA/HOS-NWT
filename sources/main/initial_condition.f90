@@ -161,7 +161,7 @@ IF (icase == 2) THEN
    END IF
    ! Wave object
    IF (ibat == 2) THEN
-         wav = front(cfg, harmo, amp_mono, theta_mono, ph_mono)
+      wav = front(cfg, harmo, amp_mono, theta_mono, ph_mono)
    ELSE IF (ibat == 3) THEN
       wav = dalrymple(cfg, xd_mono, harmo, amp_mono, theta_mono, ph_mono)
    END IF

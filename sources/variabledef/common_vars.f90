@@ -28,9 +28,9 @@ USE type
 IMPLICIT NONE
 !
 ! Number of modes
-INTEGER, PARAMETER :: n1 = 512
+INTEGER, PARAMETER :: n1 = 513
 INTEGER, PARAMETER :: n2 = 1
-INTEGER, PARAMETER :: n3 = 32
+INTEGER, PARAMETER :: n3 = 33
 ! HOS nonlinearity order
 INTEGER, PARAMETER :: mHOS = 3
 ! Dealiasing parameters

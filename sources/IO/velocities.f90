@@ -527,7 +527,7 @@ REAL(RP),DIMENSION(md1,md2) :: phimx_ext,phimy_ext
 REAL(RP),DIMENSION(md1,md2) :: phimx2_ext, phimy2_ext, phimz2_ext
 !
 ! Verification of FSBCs
-REAL(RP),DIMENSION(md1,md2)  :: detaphiz,phimxetax_ext,etax2, etay2,phiz_etax_ext,phiz_etay_ext
+REAL(RP),DIMENSION(md1,md2)  :: detaphiz,phimxetax_ext,etax2, etay2,phiz_etax_ext,phiz_etay_ext,phizMm2_etax_ext,phizMm2_etay_ext
 REAL(RP),DIMENSION(m1,m2)    :: phimx2, phimy2, phimz2,detaphiz_d,phimxetax, phiz_etax, phiz_etay
 REAL(RP),DIMENSION(m1,m2)    :: CCSL, CCSL_bis, Press_bis, Press
 !
@@ -643,11 +643,17 @@ do i1 = 1,nd1
    do i2 = 1,nd2
       phiz_etax_ext(i1,i2) = etax(i1,i2) * phizMm1(i1,i2)
       phiz_etay_ext(i1,i2) = etay(i1,i2) * phizMm1(i1,i2)
+      !
+      phizMm2_etax_ext(i1,i2) = etax(i1,i2) * phizMm2(i1,i2)
+      phizMm2_etay_ext(i1,i2) = etay(i1,i2) * phizMm2(i1,i2)
    end do
 end do
 !
 call dealias(2,phiz_etax_ext,'sin','cos')
 call dealias(2,phiz_etay_ext,'cos','sin')
+!
+call dealias(2,phizMm2_etax_ext,'sin','cos')
+call dealias(2,phizMm2_etay_ext,'cos','sin')
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
@@ -678,13 +684,15 @@ do i1 = 1,nd1
    do i2 = 1,nd2
       phimx_ext(i1,i2)     = phisx(i1,i2) - etax(i1,i2) * phizMm1(i1,i2)
       phimy_ext(i1,i2)     = phisy(i1,i2) - etay(i1,i2) * phizMm1(i1,i2)
-      phimx2_ext(i1,i2)    = phisx(i1,i2)*phisx(i1,i2) + etax2(i1,i2)*phiz2Mm2(i1,i2) - 2.0_rp*phisx(i1,i2)*phiz_etax_ext(i1,i2) 
-      phimy2_ext(i1,i2)    = phisy(i1,i2)*phisy(i1,i2) + etay2(i1,i2)*phiz2Mm2(i1,i2) - 2.0_rp*phisy(i1,i2)*phiz_etay_ext(i1,i2)
+      phimx2_ext(i1,i2)    = phisx(i1,i2)*phisx(i1,i2) + etax2(i1,i2)*phiz2Mm2(i1,i2) &
+                                - 2.0_rp*phisx(i1,i2)*phizMm2_etax_ext(i1,i2) 
+      phimy2_ext(i1,i2)    = phisy(i1,i2)*phisy(i1,i2) + etay2(i1,i2)*phiz2Mm2(i1,i2) &
+                                - 2.0_rp*phisy(i1,i2)*phizMm2_etay_ext(i1,i2)
       phimz2_ext(i1,i2)    = phiz2(i1,i2)
       phimxetax_ext(i1,i2) = geta2phiz(i1,i2) - phisx(i1,i2) * etax(i1,i2) - phisy(i1,i2) * etay(i1,i2)
       ! dealiasing add_part
-      detaphiz(i1,i2)      = geta2phiz2(i1,i2) + phiz2(i1,i2) - phisx(i1,i2) * phiz_etax_ext(i1,i2) &
-           - phisy(i1,i2) * phiz_etay_ext(i1,i2) - phix_add_ext(i1,i2)*phiz_etax_ext(i1,i2) &
+      detaphiz(i1,i2)      = geta2phiz2(i1,i2) + phiz2(i1,i2) - phisx(i1,i2) * phizMm2_etax_ext(i1,i2) &
+           - phisy(i1,i2) * phizMm2_etay_ext(i1,i2) - phix_add_ext(i1,i2)*phiz_etax_ext(i1,i2) &
             - phiy_add_ext(i1,i2)*phiz_etay_ext(i1,i2) + phiz_add_ext(i1,i2)*phiz_ext(i1,i2)
       tmp1_add_ext(i1,i2)  = - 0.5_rp*(phix_add_ext(i1,i2)**2 + phiy_add_ext(i1,i2)**2 &
            +phiz_add_ext(i1,i2)**2 + 2.0_rp*phiz_ext(i1,i2)*phiz_add_ext(i1,i2) + 2.0_rp*phimx_ext(i1,i2)*phix_add_ext(i1,i2) &
