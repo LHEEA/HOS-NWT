@@ -35,7 +35,7 @@ install:
 
 script:
   # Test
-  - make test
+  - travis_wait make test
   # Create package
   - make package
   # Make sure we can install with no issues.
