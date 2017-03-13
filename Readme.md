@@ -9,7 +9,8 @@ Numerical Wave Tank based on High-Order Spectral method
 This README file describes the different cases that might be computed with HOS-NWT
 and gives instructions to set the numerical parameters `n1` to `p2`
 
-Setting the value of integers `n1`, `n2`, `M`, `p1` and `p2` in `common_vars.f90`
+Setting the value of integers `n1`, `n2`, `M`, `p1` and `p2` in
+[`common_vars.f90`](sources/variabledef/common_vars.f90)
 
 ## 2D simulation
 
@@ -58,8 +59,6 @@ Setting the value of integer `icase` in `input_HOS-NWT.dat`
     - `41` - Bretschneider spectrum
 
 Further details about input file, output of the code... may be find at the Wiki page of HOS-NWT project: https://github.com/LHEEA/HOS-NWT/wiki
-
-***
 
 ## Solution method
 
