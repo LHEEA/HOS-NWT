@@ -3,6 +3,7 @@
 Numerical Wave Tank based on High-Order Spectral method
 
 [![Travis][buildstatus_image_travis]][travisci]
+[![Appveyor][buildstatus_image_appveyor]][appveyorci]
 
 This README file describes the different cases that might be computed with HOS-NWT
 and gives instructions to set the numerical parameters `n1` to `p2`
@@ -96,3 +97,6 @@ Further details about input file, output of the code... may be find at the Wiki 
 
 [buildstatus_image_travis]: https://travis-ci.org/LHEEA/HOS-NWT.svg?branch=master
 [travisci]: https://travis-ci.org/LHEEA/HOS-NWT
+
+[buildstatus_image_appveyor]: https://ci.appveyor.com/api/projects/status/9pu4d2njd540ffkp?svg=true
+[appveyorci]: https://ci.appveyor.com/project/Gjacquenot/hos-nwt
