@@ -7,7 +7,7 @@ Numerical Wave Tank based on High-Order Spectral method
 [![Codecov][codecov_image]][codecovci]
 
 This README file describes the different cases that might be computed with HOS-NWT
-and gives instructions to set the numerical parameters `n1` to `p2`
+and gives instructions to set the numerical parameters `n1` to `p2`.
 
 Setting the value of integers `n1`, `n2`, `M`, `p1` and `p2` in
 [`common_vars.f90`](sources/variabledef/common_vars.f90)
@@ -34,7 +34,7 @@ For a 3D simulation,
    compile with `p2` set to maximal required value (total dealiasing is obtained with `p2=M`
    but it can be reduced if `p2` is further set to a value below `M`)
 
-* 'input_HOS-NWT.dat' will have to be attached to run this program *
+   `input_HOS-NWT.dat` will have to be attached to run this program.
 
 Setting the value of integer `icase` in `input_HOS-NWT.dat`
 
@@ -64,29 +64,29 @@ Further details about input file, output of the code... may be find at the Wiki 
 
 ### Numerical tools
 
-    1. fully FFT resolution for spectral and additionnal modes.
-        1.1. Fully nonlinear HOS for free surface
-        1.2. 1st, 2nd and 3rd order wavemaker modeling
-    2. Runge-Kutta 4th-order scheme in time.
+1. Fully FFT resolution for spectral and additionnal modes.
+  1.1. Fully nonlinear HOS for free surface
+  1.2. 1st, 2nd and 3rd order wavemaker modeling
+2. Runge-Kutta 4th-order scheme in time.
 
 
 ### Coordinates system
 
-             ^ Y (the width of wave tank)
-             |
-             |
-             O --------->X (the length of wave tank)
+    ^ Y (the width of wave tank)
+    |
+    |
+    O ---------> X (the length of wave tank)
 
 
 ### Discretization of wave field
 
-      Y ^  eta(1,n2) eta(2,n2) --------------- eta(n1,n2)
-        |    .         .                          .
-        |    .         .                          .
-        |  eta(1,3)    .                          .
-        |  eta(1,2)  eta(2,2) ----------------- eta(n1,2)
-        |  eta(1,1)  eta(2,1) eta(3,1) -------- eta(n1,1)
-      O |-------------------------------------------> X
+    Y ^  eta(1,n2) eta(2,n2) --------------- eta(n1,n2)
+      |    .         .                          .
+      |    .         .                          .
+      |  eta(1,3)    .                          .
+      |  eta(1,2)  eta(2,2) ----------------- eta(n1,2)
+      |  eta(1,1)  eta(2,1) eta(3,1) -------- eta(n1,1)
+      0 -------------------------------------------> X
 
 
 ### Nondimensionalizations
