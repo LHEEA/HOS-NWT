@@ -253,7 +253,11 @@ CALL initialize_wav_cfg(icase,igeom,ibat,Tscale,cfg,wav)
 !     __________________________________________________________________     
 !
 IF(iabsnb /= 0) THEN
-   call absorb
+    call absorb
+ELSE ! ensure it is initialized
+    nu   = 0.0_rp
+    dnux = 0.0_rp
+    dnuy = 0.0_rp
 ENDIF
 !     __________________________________________________________________
 !
