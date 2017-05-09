@@ -101,5 +101,5 @@ Further details about input file, output of the code... may be find at the Wiki 
 [buildstatus_image_appveyor]: https://ci.appveyor.com/api/projects/status/q34rxsbulke4mhew?svg=true
 [appveyorci]: https://ci.appveyor.com/project/LHEEA/hos-nwt
 
-[codecov_image]: https://codecov.io/gh/Gjacquenot/HOS-NWT/branch/master/graph/badge.svg
-[codecovci]: https://codecov.io/gh/Gjacquenot/HOS-NWT
+[codecov_image]: https://codecov.io/gh/LHEEA/HOS-NWT/branch/master/graph/badge.svg
+[codecovci]: https://codecov.io/gh/LHEEA/HOS-NWT
