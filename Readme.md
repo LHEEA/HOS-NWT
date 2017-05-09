@@ -99,7 +99,7 @@ Further details about input file, output of the code... may be find at the Wiki 
 [travisci]: https://travis-ci.org/LHEEA/HOS-NWT
 
 [buildstatus_image_appveyor]: https://ci.appveyor.com/api/projects/status/q34rxsbulke4mhew?svg=true
-[appveyorci]: https://ci.appveyor.com/project/LHEEA/hos-nwt
+[appveyorci]: https://ci.appveyor.com/project/gducrozet/hos-nwt
 
 [codecov_image]: https://codecov.io/gh/LHEEA/HOS-NWT/branch/master/graph/badge.svg
 [codecovci]: https://codecov.io/gh/LHEEA/HOS-NWT
