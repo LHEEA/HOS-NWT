@@ -98,8 +98,8 @@ Further details about input file, output of the code... may be find at the Wiki 
 [buildstatus_image_travis]: https://travis-ci.org/LHEEA/HOS-NWT.svg?branch=master
 [travisci]: https://travis-ci.org/LHEEA/HOS-NWT
 
-[buildstatus_image_appveyor]: https://ci.appveyor.com/api/projects/status/9pu4d2njd540ffkp?svg=true
-[appveyorci]: https://ci.appveyor.com/project/Gjacquenot/hos-nwt
+[buildstatus_image_appveyor]: https://ci.appveyor.com/api/projects/status/q34rxsbulke4mhew?svg=true
+[appveyorci]: https://ci.appveyor.com/project/LHEEA/hos-nwt
 
 [codecov_image]: https://codecov.io/gh/Gjacquenot/HOS-NWT/branch/master/graph/badge.svg
 [codecovci]: https://codecov.io/gh/Gjacquenot/HOS-NWT
